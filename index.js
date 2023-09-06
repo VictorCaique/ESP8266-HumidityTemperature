@@ -10,13 +10,15 @@ app.listen(8081, function(){
 
 const Sequelize = require("sequelize")
 
-const sequelize = new Sequelize("esp32", "root", "",{
+// const sequelize = new Sequelize("esp32", "root", "",{
 
-    host: "localhost",
+//     host: "localhost",
 
-    dialect: "mysql"
+//     dialect: "mysql"
 
-})
+// })
+
+const sequelize = new Sequelize("postgres://host:xHLPnGS334OMHn8dU9WAykklYV8tV3Oy@dpg-cjsfame3m8ac73ckaegg-a.oregon-postgres.render.com/esp8266");
 
 sequelize.authenticate().then(function(){
 
