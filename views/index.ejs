@@ -12,19 +12,25 @@
   <canvas id="sensorChart" width="400" height="200"></canvas>
 
   <script>
+    const formattedData = sensorsData.map((sensor) => {
+      const date = new Date(sensor.createdAt);
+      const hour = date.getHours();
+      return { hour, temperatura: sensor.temperatura, umidade: sensor.umidade };
+    });
+
     const ctx = document.getElementById("sensorChart").getContext("2d");
     const data = {
-      labels: [<%- sensorsData.map(sensor => sensor.createdAt) %>],
+      labels: formattedData.map((entry) => entry.hour + "h"), // Rótulos com horas
       datasets: [
         {
           label: "Temperatura",
-          data: [<%- sensorsData.map(sensor => sensor.temperatura) %>],
+          data: formattedData.map((entry) => entry.temperatura), // Dados de temperatura
           borderColor: "red",
           backgroundColor: "rgba(255, 0, 0, 0.2)",
         },
         {
           label: "Umidade",
-          data: [<%- sensorsData.map(sensor => sensor.umidade) %>],
+          data: formattedData.map((entry) => entry.umidade), // Dados de umidade
           borderColor: "blue",
           backgroundColor: "rgba(0, 0, 255, 0.2)",
         },

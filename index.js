@@ -60,11 +60,6 @@ app.get("/", async function(req, res){
           order: [["createdAt", "ASC"]],
         });
     
-        // Formate o timestamp para DD/MM
-        sensorsData.forEach((sensor) => {
-          sensor.createdBy = sensor.createdAt.toLocaleDateString("pt-BR");
-        });
-    
         res.render("./index", { sensorsData });
       } catch (error) {
         console.error("Erro ao buscar dados do Sensor:", error);
