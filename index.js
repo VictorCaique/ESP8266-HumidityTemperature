@@ -51,6 +51,7 @@ const Sensor = sequelize.define("sensors",{
 //Sensor.sync({force: true})
 
 app.set("view engine", "ejs");
+app.set('views', './views');
 
 app.get("/", async function(req, res){
 
@@ -64,7 +65,7 @@ app.get("/", async function(req, res){
           sensor.createdBy = sensor.createdAt.toLocaleDateString("pt-BR");
         });
     
-        res.render("./index.ejs", { sensorsData });
+        res.render("./index", { sensorsData });
       } catch (error) {
         console.error("Erro ao buscar dados do Sensor:", error);
         res.status(500).send("Erro ao buscar dados do Sensor");
