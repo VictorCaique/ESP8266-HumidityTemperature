@@ -64,7 +64,7 @@ app.get("/", async function(req, res){
           sensor.createdBy = sensor.createdAt.toLocaleDateString("pt-BR");
         });
     
-        res.render("index", { sensorsData });
+        res.render("./index.ejs", { sensorsData });
       } catch (error) {
         console.error("Erro ao buscar dados do Sensor:", error);
         res.status(500).send("Erro ao buscar dados do Sensor");
