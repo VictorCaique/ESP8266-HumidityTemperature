@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gráfico de Sensor</title>
+  <!-- Inclua os arquivos CSS e JavaScript necessários para o Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Gráfico de Sensor</h1>
+  <canvas id="sensorChart" width="400" height="200"></canvas>
+
+  <script>
+    const ctx = document.getElementById("sensorChart").getContext("2d");
+    const data = {
+      labels: [<%- sensorsData.map(sensor => sensor.createdAt) %>],
+      datasets: [
+        {
+          label: "Temperatura",
+          data: [<%- sensorsData.map(sensor => sensor.temperatura) %>],
+          borderColor: "red",
+          backgroundColor: "rgba(255, 0, 0, 0.2)",
+        },
+        {
+          label: "Umidade",
+          data: [<%- sensorsData.map(sensor => sensor.umidade) %>],
+          borderColor: "blue",
+          backgroundColor: "rgba(0, 0, 255, 0.2)",
+        },
+      ],
+    };
+    const config = {
+      type: "line",
+      data: data,
+    };
+    new Chart(ctx, config);
+  </script>
+</body>
+</html>

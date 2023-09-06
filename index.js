@@ -48,11 +48,27 @@ const Sensor = sequelize.define("sensors",{
 
 })
 
-Sensor.sync({force: true})
+//Sensor.sync({force: true})
 
-app.get("/",function(req, res){
+app.set("view engine", "ejs");
 
-    res.send("Projeto Esp")
+app.get("/", async function(req, res){
+
+    try {
+        const sensorsData = await Sensor.findAll({
+          order: [["createdAt", "ASC"]],
+        });
+    
+        // Formate o timestamp para DD/MM
+        sensorsData.forEach((sensor) => {
+          sensor.createdBy = sensor.createdAt.toLocaleDateString("pt-BR");
+        });
+    
+        res.render("index", { sensorsData });
+      } catch (error) {
+        console.error("Erro ao buscar dados do Sensor:", error);
+        res.status(500).send("Erro ao buscar dados do Sensor");
+      }
 
 })
 
