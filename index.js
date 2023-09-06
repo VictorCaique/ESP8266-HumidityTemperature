@@ -18,7 +18,7 @@ const Sequelize = require("sequelize")
 
 // })
 
-const sequelize = new Sequelize("postgres://host:xHLPnGS334OMHn8dU9WAykklYV8tV3Oy@dpg-cjsfame3m8ac73ckaegg-a.oregon-postgres.render.com/esp8266");
+const sequelize = new Sequelize("postgres://host:xHLPnGS334OMHn8dU9WAykklYV8tV3Oy@dpg-cjsfame3m8ac73ckaegg-a.oregon-postgres.render.com/esp8266?ssl=true" );
 
 sequelize.authenticate().then(function(){
 
