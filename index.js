@@ -77,3 +77,7 @@ app.get("/cadastrar/:temperatura/:umidade",function(req, res){
     res.redirect("/")
 
 })
+
+app.get('/selectall', async function(req, res) {
+    res.send(await Sensor.findAll());
+})
