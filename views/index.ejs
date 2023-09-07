@@ -13,6 +13,7 @@
 
   <script>
     const sensorData = <%- sensorsData %>;
+    sensorData = JSON.parse(sensorData);
     const formattedData = sensorData.map((sensor) => {
       const date = new Date(sensor.createdAt);
       const hour = date.getHours();
