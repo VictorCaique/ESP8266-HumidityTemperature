@@ -48,7 +48,7 @@ const Sensor = sequelize.define("sensors",{
 
 })
 
-//Sensor.sync({force: true})
+Sensor.sync({force: true})
 
 app.set("view engine", "ejs");
 app.set('views', './views');
