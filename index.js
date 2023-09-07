@@ -60,7 +60,7 @@ app.get("/", async function(req, res){
           order: [["createdAt", "ASC"]],
         });
 
-        var sensorsDataJson = sensorsDataGet.map(async (sensor) => await sensor.toJSON());
+        var sensorsDataJson = sensorsDataGet.map((sensor) => sensor.toJSON());
         var sensorsData = JSON.stringify(sensorsDataJson);
     
         res.render("./index", { sensorsData });
