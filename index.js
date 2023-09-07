@@ -56,9 +56,11 @@ app.set('views', './views');
 app.get("/", async function(req, res){
 
     try {
-        const sensorsData = await Sensor.findAll({
+        var sensorsData = await Sensor.findAll({
           order: [["createdAt", "ASC"]],
         });
+
+        sensorsData = sensorsData.map((sensor) => sensor.toJSON());
     
         res.render("./index", { sensorsData });
       } catch (error) {
