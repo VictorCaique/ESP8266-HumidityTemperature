@@ -12,11 +12,11 @@
   <canvas id="sensorChart" width="400" height="200"></canvas>
 
   <script>
-    const formattedData = sensorsData.map((sensor) => {
+    const formattedData = <%- sensorsData.map((sensor) => {
       const date = new Date(sensor.createdAt);
       const hour = date.getHours();
       return { hour, temperatura: sensor.temperatura, umidade: sensor.umidade };
-    });
+    }); %>
 
     const ctx = document.getElementById("sensorChart").getContext("2d");
     const data = {
