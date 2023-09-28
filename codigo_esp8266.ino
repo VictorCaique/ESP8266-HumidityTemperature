@@ -3,8 +3,8 @@
 #include <SimpleDHT.h>
 
 // WiFi - Coloque aqui suas configurações de WI-FI
-const char ssid[] = "Rede2004";
-const char psw[] = "victin17";
+const char ssid[] = "Fatec111";
+const char psw[] = "123654789";
 
 // Site remoto - Coloque aqui os dados do site que vai receber a requisição GET
 const char http_site[] = "esp8266-temperature-project.onrender.com";
@@ -14,7 +14,7 @@ const char http_path[] = "/cadastrar";
 // Variáveis globais
 
 unsigned long previousMillis = 0;
-const long interval = 5000;
+const long interval = 3600000;
 
 IPAddress server(216, 24, 57, 253);  // Endereço IP do servidor - http_site
 int pinDHT11 = D0;
